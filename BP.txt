@@ -1,0 +1,27 @@
+エディター設定→Graph、Blueprintで検索を掛ける
+
+UseGridsInTheMaterialAndBlueprintEditor・・・グリッドのON、OFF
+GridRegularColor・・・規則正しいグリッドの色
+GridRulerColor・・・定規（一定間隔ごと）のグリッドの色
+GridCenterColor・・・中心の十字グリッドの色
+GridSnapSize・・・ノードが動く単位≠1グリッドの大きさ
+
+・BPにはセンターが存在する
+（デフォルトだとBeginPlayが中心に置かれる）
+・GridRegular、GridRulerの間隔はGridSnapSizeによって変わる
+・ノードは基本的にGridRegularの間隔で置かれる
+1,2,4,8,16は同間隔
+（リルートノードは接続先ではなく外枠のノードに当たる部分が揃えられる）
+・中心は特に関係しなさそう？閉じる→再開するの場合は前回のビュー情報が再現される
+
+【KeyboardShortcuts】
+Zoom to Graph Extents・・・配置されているノードを考慮したビュー情報にズームしてくれる
+Zとか？
+
+Add call to parent function・・・指定の親ノードを呼び出す
+
+Align**・・・複数選択したノードを整列させる
+
+Distribute**・・・各ノードの中心位置を見て両端合わせで整列
+Horizontally・・・水平方向に整列
+Vertically・・・垂直方向に整列
