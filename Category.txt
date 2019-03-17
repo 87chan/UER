@@ -1,0 +1,45 @@
+FSlateEditableTextLayout::HandleKeyDown
+FSlateEditableTextLayout::HandleCarriageReturn
+
+FSlateEditableTextLayout::HandleFocusLost
+
+SInlineEditableTextBlock::OnTextBoxCommitted
+SGraphActionMenu::OnNameTextCommitted
+SMyBlueprint::OnCategoryNameCommitted
+FBlueprintEditorUtils::SetBlueprintVariableCategory(BlueprintEditorUtils.cpp)
+↑ここに渡される段階ではエディター上で入力された文字列でしか無いので、
+　現在編集されているTextの階層を知る必要がある
+
+○自身の今のカテゴリ階層
+　例）「A|1|1」
+　→FEdGraphSchemaAction::Category
+
+▲現在編集中の階層
+　例）「1」
+　→「FGraphActionNode::ParentNode」の「FGraphActionNode::DisplayText」が存在するかどうか
+　　存在する...親カテゴリ
+　　存在しない...ルートカテゴリ
+　　
+　　1回目の結果...「A」
+　　2回目の結果...「Null」
+　　「A|」としておく
+
+○編集後のカテゴリ名
+　例）「2」
+
+▲編集後のカテゴリ階層
+　例）「A|2|1」
+　「A|1|1」と「A|」で分割し、
+　「A|」と「1|1」となる
+　「1|1」という箇所を「*|1」とする
+　「*|1」→「2|1」となり
+　「A|」+「2|1」=「A|2|1」
+
+class SMyBlueprint : public SCompoundWidget
+class SLATECORE_API SCompoundWidget : public SWidget
+
+ParentWidgetPtr
+SMyBlueprint::MoveCategoryBeforeCategory
+
+FReply OnDrop
+ActionNode.Pin()->GetCategoryPath()
